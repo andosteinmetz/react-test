@@ -45,7 +45,6 @@ class App extends Component {
   handleSubmit(e){
     e.preventDefault();
     let newCustomer = Object.assign({}, this.state.newCustomer);
-    this.setState({customer: newCustomer});
     this.setState((state)=> {
       return {editing:!state.editing, customer: newCustomer};
     })
