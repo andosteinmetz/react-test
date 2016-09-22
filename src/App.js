@@ -34,7 +34,6 @@ class App extends Component {
     let propValue = e.target.value;
     let updatedCustomer = Object.assign({}, this.state.newCustomer);
     updatedCustomer[propName] = propValue;
-
     this.setState({newCustomer: updatedCustomer});
   }
 
