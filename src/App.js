@@ -19,11 +19,16 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = state;
+    /*
+      this throws a warning not to mutate state directly, but seems less redundant and error prone than re-declaring
+      newCustomer to be identical to customer
+    */
     this.state.newCustomer = Object.assign({}, this.state.customer);
   }
 
   toggleForm(e){
     e.preventDefault();
+    // changed this to return an object rather than an expression to mutate state, added customer reset
     this.setState((state) => {
       return {editing: !state.editing, newCustomer: state.customer}
     });
@@ -42,7 +47,7 @@ class App extends Component {
     let newCustomer = Object.assign({}, this.state.newCustomer);
     this.setState({customer: newCustomer});
     this.setState((state)=> {
-      return state.editing = !state.editing;
+      return {editing:!state.editing, customer: newCustomer};
     })
   }
 
